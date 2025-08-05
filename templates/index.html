@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Catálogo de Productos</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="menu">
+    <a href="#">Inicio</a>
+    <a href="#">Catálogo</a>
+    <a href="#">Contacto</a>
+    <a href="/logout">Cerrar sesión</a>
+  </nav>
+
+  <div class="contenedor">
+    <h1>Agregar Producto</h1>
+    {% if request.args.get('agregado') == 'ok' %}
+  <p style="color: green;">✅ Producto agregado correctamente</p>
+{% endif %}
+
+    <form method="POST" action="/agregar">
+      <input type="text" name="nombre" placeholder="Nombre del producto" required />
+      <input type="number" name="precio" placeholder="Precio" required />
+      <input type="text" name="descripcion" placeholder="Descripción del producto" />
+      <input type="text" name="imagen" placeholder="URL de la imagen" />
+      
+      <!-- Categoría -->
+      <select name="categoria" required>
+        <option value="" disabled selected>Selecciona una categoría</option>
+        <option value="Tecnología">Tecnología</option>
+        <option value="Ropa">Ropa</option>
+        <option value="Anime">Anime</option>
+        <option value="Otros">Otros</option>
+      </select>
+
+      <button type="submit">Agregar al catálogo</button>
+    </form>
+
+    <h2>Productos en Catálogo</h2>
+
+    <div class="tarjetas">
+      {% for producto in productos %}
+        <div class="tarjeta">
+          {% if producto.imagen %}
+            <img src="{{ producto.imagen }}" alt="Imagen de {{ producto.nombre }}" class="tarjeta-img">
+          {% endif %}
+          <h3>{{ producto.nombre }}</h3>
+          <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+          <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+          <p>{{ producto.descripcion }}</p>
+
+          <a class="btn-eliminar" href="/eliminar/{{ loop.index0 }}" onclick="return confirm('¿Seguro que deseas eliminar este producto?')">Eliminar</a>
+          <a class="btn-editar" href="/editar/{{ loop.index0 }}">✏️ Editar</a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo Público</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="menu">
+    <a href="/">Admin</a>
+    <a href="/catalogo">Ver Catálogo</a>
+  </nav>
+
+  <div class="contenedor">
+    <h1>Catálogo de Productos</h1>
+
+    <div class="tarjetas">
+      {% for producto in productos %}
+        <div class="tarjeta">
+          {% if producto.imagen %}
+            <img src="{{ producto.imagen }}" alt="Imagen de {{ producto.nombre }}" class="tarjeta-img">
+          {% endif %}
+          <h3>{{ producto.nombre }}</h3>
+          <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+          <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+          <p>{{ producto.descripcion }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</body>
+</html>
