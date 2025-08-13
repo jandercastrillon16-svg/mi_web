@@ -1,13 +1,13 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background: url('https://muchosnegociosrentables.com/wp-content/uploads/2022/08/como-vender-figuras-anime.jpg') no-repeat center center fixed;
+  background: url('../static/fondito.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #333;
 }
 
 .menu {
-  background: linear-gradient(90deg, #f12711, #f5af19, #00c9ff, #a1ffce);
+  background: linear-gradient(90deg, #433999, #912182, #00115a, #000155);
   padding: 14px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -31,7 +31,7 @@ body {
 }
 
 h1, h2 {
-  background: linear-gradient(90deg, #f12711, #f5af19, #00c9ff);
+  background: linear-gradient(90deg, #6930b4, #6930b4, #6930b4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 600;
@@ -49,7 +49,7 @@ form input, form button, select {
 }
 
 form button {
-  background: linear-gradient(45deg, #ff416c, #ff4b2b, #f9d423, #00c9ff);
+  background: linear-gradient(45deg, #433999, #912182, #00115a, #000155);
   color: white;
   font-weight: 600;
   cursor: pointer;
@@ -104,15 +104,18 @@ form button {
 
 .tarjeta-img {
   width: 100%;
-  height: 160px;
-  object-fit: cover;
+  height: 200px; /* más alto */
+  object-fit: contain; /* para que la imagen completa se vea sin recortar */
+  background-color: #f4f4f4; /* color de fondo en caso de espacios vacíos */
   border-radius: 6px;
   margin-bottom: 12px;
+  padding: 5px; /* pequeño margen interno para que no pegue al borde */
 }
+
 
 .btn-eliminar {
   display: inline-block;
-  background: #e53935;
+  background: #6541ca;
   color: white;
   padding: 8px 16px;
   border-radius: 6px;
@@ -123,12 +126,12 @@ form button {
 }
 
 .btn-eliminar:hover {
-  background: #c62828;
+  background: #0e074d;
 }
 
 .btn-editar {
   display: inline-block;
-  background: #ff9800;
+  background: #2a0c52;
   color: white;
   padding: 8px 16px;
   border-radius: 6px;
@@ -139,5 +142,5 @@ form button {
 }
 
 .btn-editar:hover {
-  background: #fb8c00;
+  background: #a04dff;
 }

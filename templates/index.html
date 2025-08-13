@@ -2,24 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Catálogo de Productos</title>
+  <title>Panel de Administración</title>
   <link rel="stylesheet" href="/static/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <nav class="menu">
-    <a href="#">Inicio</a>
-    <a href="#">Catálogo</a>
+    <a href="/">Inicio</a>
+    <a href="/catalogo">Catálogo</a>
     <a href="#">Contacto</a>
     <a href="/logout">Cerrar sesión</a>
   </nav>
 
   <div class="contenedor">
     <h1>Agregar Producto</h1>
+
     {% if request.args.get('agregado') == 'ok' %}
-  <p style="color: green;">✅ Producto agregado correctamente</p>
-{% endif %}
+      <p style="color: green;">✅ Producto agregado correctamente</p>
+    {% endif %}
 
     <form method="POST" action="/agregar">
       <input type="text" name="nombre" placeholder="Nombre del producto" required />
@@ -27,7 +28,6 @@
       <input type="text" name="descripcion" placeholder="Descripción del producto" />
       <input type="text" name="imagen" placeholder="URL de la imagen" />
       
-      <!-- Categoría -->
       <select name="categoria" required>
         <option value="" disabled selected>Selecciona una categoría</option>
         <option value="Tecnología">Tecnología</option>
@@ -61,4 +61,3 @@
 
 </body>
 </html>
-

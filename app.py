@@ -18,8 +18,7 @@ def index():
 @app.route('/agregar', methods=['POST'])
 def agregar():
     if not session.get('logueado'):
-        return redirect(url_for('index', agregado='ok'))
-
+        return redirect(url_for('login'))
 
     nombre = request.form['nombre']
     precio = request.form['precio']
@@ -35,7 +34,7 @@ def agregar():
             'imagen': imagen,
             'categoria': categoria
         })
-    return redirect(url_for('index'))
+    return redirect(url_for('index', agregado='ok'))
 
 @app.route('/eliminar/<int:index>')
 def eliminar(index):
@@ -81,9 +80,8 @@ def logout():
 
 @app.route('/catalogo')
 def catalogo_publico():
+    # Catálogo visible para todos, sin login
     return render_template('catalogo.html', productos=productos)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
-
